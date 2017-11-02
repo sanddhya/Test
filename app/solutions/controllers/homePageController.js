@@ -6,7 +6,7 @@ var homePageController = pbSmbApp.controller('homePageController', ['$scope', fu
 
         $(".single-item").slick({
             autoplay: true,
-            autoplaySpeed: 1000
+            autoplaySpeed: 2000
         });
 
         $('a[data-toggle]').click(function () {
