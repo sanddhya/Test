@@ -156,7 +156,7 @@ body {
 
 .left-panel {
     background: #fff;
-    padding: 0 30px;
+    padding: 1px 15px;
     height: 500px;
 }
 
@@ -230,6 +230,13 @@ body {
     border-color: #e1e1e1;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.15);
     margin: 10px 0;
+    position: relative;
+}
+
+.link-box .checkBox {
+    position: absolute;
+    top: 25px;
+    left: 15px;
 }
 
 .link-body {
@@ -249,7 +256,7 @@ body {
 .link-footer .badge {
     background: #EEEEEE;
     color: black;
-    padding: 5px 15px;
+    padding: 5px 10px;
 }
 
 .link-body, .link-footer {
@@ -318,6 +325,39 @@ span.checkBox {
 span.checkBox img {
     width: 100%;
     height: 100%;
+}
+
+.showmore a + a {
+    background: #314183;
+    color: #fff;
+    padding: 3px 6px;
+    border-radius: 8px;
+    font-size: 11px;
+}
+
+.payAndSubscribe {
+    background: #D7D7D7;
+    margin: 10px 0;
+    padding: 25px 15px;
+    border-radius: 5px;
+}
+
+.payAndSubscribe label {
+    color: #EC008B;
+    font-size: 18px;
+}
+
+.payAndSubscribe label span {
+    font-size: 27px;
+}
+
+.payAndSubscribe a {
+    display: block;
+    text-align: center;
+    background: #EC008B;
+    padding: 10px;
+    color: #fff;
+    margin-top: 15px;
 }
 
 .carousalContainer {

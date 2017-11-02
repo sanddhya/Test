@@ -30,387 +30,72 @@
             <div class="sub-heading">
                <h1>Build your own Bundle</h1>
                <h4>We have curated best of breed apps in most important categories for your business</h4>
-               <h4>Select the category that you need and then select one or more apps in your selected category to build your bundle</h4>
+               <h4 style="color:black;">Select the category that you need and then select one or more apps in your selected category to build your bundle</h4>
             </div>
          </div>
          <section class="content">
             <div class="container">
                <div class="row">
-                  <div class="col-md-3 left-panel">
-                     <h3>Categories</h3>
-                     <ul>
-                        <li ng-repeat="cat in categories">
-                           <a ng-click="selectCategory(cat)" href="javascript:void(0)">
-                           <span class="checkBox">
-                              <img 
-                              ng-src="{{!isCatSelected(cat)?'images/logos/checkbox-blank.png':'images/logos/checkbox-marked.png'}}">
-                           </span>
-                           {{cat}}
-                           </a>
-                        </li>
-                        
-                     </ul>
+                  <div class="col-md-3">
+                     <div class="left-panel">
+                           <h3>Categories</h3>
+                           <ul>
+                              <li ng-repeat="cat in categories">
+                                 <a ng-click="selectCategory(cat)" href="javascript:void(0)">
+                                 <span class="checkBox">
+                                    <img 
+                                    ng-src="{{!isCatSelected(cat)?'images/logos/checkbox-blank.png':'images/logos/checkbox-marked.png'}}">
+                                 </span>
+                                 {{cat}}
+                                 </a>
+                              </li>
+                              
+                           </ul>
+                     </div>
+                     
+                     <div class="payAndSubscribe" ng-show="selectedCategories.length && selectedApps.length">
+                        <p>You have selected,</p>
+                        <label><span>{{selectedApps.length}}</span> Apps from <span>{{selectedCategories.length}}</span> categories</label>
+                        <a href="">Pay and Subscribe</a>
+                     </div>
                   </div>
                   <div class="col-md-9 main-section">
-                     <div class="sub-heading">
-                        <h1>App Catalog</h1>
+                     <!-- <div class="sub-heading">
+                        <h1>Select Individual Apps from our App Catalog</h1>
                         <h4>Get the Apps of your business needs</h4>
-                     </div>
+                     </div> -->
                      <div class="body">
                         <div class="col-md-12">
-                           <section id="shippingAndMailing" ng-show="isCatSelected('Shipping & Mailing')">
+                           <section ng-show="isCatSelected(cat.name)" ng-repeat="cat in categoryList">
                               <div class="row">
                                  <div class="col-md-12">
-                                    <h3>Shipping & Mailing</h3>
-                                    <p>Send, Receive, Track, Sort, Go Global</p>
+                                    <h3>{{cat.name}}</h3>
+                                    <p>{{cat.desc}}</p>
                                  </div>
                               </div>
                               <div class="row">
-                                 <div class="col-md-4">
+                                 <div class="col-md-4" ng-repeat="app in cat.apps">
                                     <div class="link-box">
-                                       <a href="http://www.ravendelivery.com">
+                                       <span class="checkBox">
+                                          <img 
+                                          ng-src="{{!isAppSelected(app)?'images/logos/checkbox-blank.png':'images/logos/checkbox-marked.png'}}">
+                                       </span>
+                                       <a href="javascript:void(0)" ng-click="selectApp(app)">
                                           <div class="link-heading">
                                              <div class="icon">
-                                                <img src="images/logos/11.png">
+                                                <img ng-src="{{'images/logos/'+app.iconUrl}}">
                                              </div>
                                           </div>
                                           <div class="link-body">
-                                             <h4>Raven Delivery</h4>
-                                             <p>'Raven Delivery' is an on-demand delivery platform integrated with UberRush/PostMates systems to our SMB clients. SMBs can opt...</p>
+                                             <h4>{{app.name}}</h4>
+                                             <p>{{app.desc}}</p>
                                           </div>
                                           <div class="link-footer">
                                              <div class="badge">
-                                                Shipping & Mailing
+                                                {{app.cost}}
                                              </div>
-                                          </div>
-                                       </a>
-                                    </div>
-                                 </div>
-                                 <div class="col-md-4">
-                                    <div class="link-box">
-                                       <a href="http://www.shipminders.com">
-                                          <div class="link-heading">
-                                             <div class="icon">
-                                                <img src="images/logos/Shipminders logo.png">
-                                             </div>
-                                          </div>
-                                          <div class="link-body">
-                                             <h4>Shipminders</h4>
-                                             <p>A calendar integration app that saves shipping costs</p>
-                                          </div>
-                                          <div class="link-footer">
-                                             <div class="badge">
-                                                Shipping & Mailing
-                                             </div>
-                                          </div>
-                                       </a>
-                                    </div>
-                                 </div>
-                              </div>
-                           </section>
-                           <section id="Marketing" ng-show="isCatSelected('Marketing')">
-                              <div class="row">
-                                 <div class="col-md-12">
-                                    <h3>Marketing</h3>
-                                    <p>Reach out to new customers, analyse competition, build digital presence</p>
-                                 </div>
-                              </div>
-                              <div class="row">
-                                 <div class="col-md-4">
-                                    <div class="link-box">
-                                       <a href="http://www.onlinerepumanage.com">
-                                          <div class="link-heading">
-                                             <div class="icon">
-                                                <img src="images/logos/4_Repumanage.png">
-                                             </div>
-                                          </div>
-                                          <div class="link-body">
-                                             <h4>Onlinerepumanage</h4>
-                                             <p>Online reputation management solution</p>
-                                          </div>
-                                          <div class="link-footer">
-                                             <div class="badge">
-                                                Marketing
-                                             </div>
-                                          </div>
-                                       </a>
-                                    </div>
-                                 </div>
-                                 <div class="col-md-4">
-                                    <div class="link-box">
-                                       <a href="http://www.adooapp.com">
-                                          <div class="link-heading">
-                                             <div class="icon">
-                                                <img src="images/logos/1_Adoo.png">
-                                             </div>
-                                          </div>
-                                          <div class="link-body">
-                                             <h4>Adoo</h4>
-                                             <p>Smart Contacts and New Customer Aquisition App for SMBs</p>
-                                          </div>
-                                          <div class="link-footer">
-                                             <div class="badge">
-                                                Marketing
-                                             </div>
-                                          </div>
-                                       </a>
-                                    </div>
-                                 </div>
-                                 <div class="col-md-4">
-                                    <div class="link-box">
-                                       <a href="http://www.audiencekart.com">
-                                          <div class="link-heading">
-                                             <div class="icon">
-                                                <img src="images/logos/2_Audicart.png">
-                                             </div>
-                                          </div>
-                                          <div class="link-body">
-                                             <h4>Audiencekart</h4>
-                                             <p>Smart Audience connects SMBs such as small retail business owner, online retail business, hyperlocal food delivery business...</p>
-                                          </div>
-                                          <div class="link-footer">
-                                             <div class="badge">
-                                                Marketing
-                                             </div>
-                                          </div>
-                                       </a>
-                                    </div>
-                                 </div>
-                              </div>
-                           </section>
-                           <section id="timesheetsBilling" ng-show="isCatSelected('Timesheets & Billing')">
-                              <div class="row">
-                                 <div class="col-md-12">
-                                    <h3>Timesheets & Billing</h3>
-                                    <p></p>
-                                 </div>
-                              </div>
-                              <div class="row">
-                                 <div class="col-md-4">
-                                    <div class="link-box">
-                                       <a href="http://www.shipticketdesk.com">
-                                          <div class="link-heading">
-                                             <div class="icon">
-                                                <img src="images/logos/Clicktime.png">
-                                             </div>
-                                          </div>
-                                          <div class="link-body">
-                                             <h4>ClickTime</h4>
-                                             <p>Easy Online Timesheets</p>
-                                          </div>
-                                          <div class="link-footer">
-                                             <div class="badge">
-                                                Customer Support
-                                             </div>
-                                          </div>
-                                       </a>
-                                    </div>
-                                 </div>
-                                 <div class="col-md-4">
-                                    <div class="link-box">
-                                       <a href="http://www.selfservebot.com">
-                                          <div class="link-heading">
-                                             <div class="icon">
-                                                <img src="images/logos/toggl.png">
-                                             </div>
-                                          </div>
-                                          <div class="link-body">
-                                             <h4>Toggl</h4>
-                                             <p>Time Tracker & Employee Timesheet Software</p>
-                                          </div>
-                                          <div class="link-footer">
-                                             <div class="badge">
-                                                Customer Support
-                                             </div>
-                                          </div>
-                                       </a>
-                                    </div>
-                                 </div>
-                                 <div class="col-md-4">
-                                    <div class="link-box">
-                                       <a href="http://www.selfservebot.com">
-                                          <div class="link-heading">
-                                             <div class="icon">
-                                                <img src="images/logos/Bigtime.png">
-                                             </div>
-                                          </div>
-                                          <div class="link-body">
-                                             <h4>Bigtime</h4>
-                                             <p>#1 Time & Billing App</p>
-                                          </div>
-                                          <div class="link-footer">
-                                             <div class="badge">
-                                                Customer Support
-                                             </div>
-                                          </div>
-                                       </a>
-                                    </div>
-                                 </div>
-                              </div>
-                           </section>
-                           <section id="accountingTaxation" ng-show="isCatSelected('Accounting & Taxation')">
-                              <div class="row">
-                                 <div class="col-md-12">
-                                    <h3>Accounting & Taxation </h3>
-                                    <p></p>
-                                 </div>
-                              </div>
-                              <div class="row">
-                                 <div class="col-md-4">
-                                    <div class="link-box">
-                                       <a href="http://www.selfservebot.com">
-                                          <div class="link-heading">
-                                             <div class="icon">
-                                                <img src="images/logos/quickbooks.png">
-                                             </div>
-                                          </div>
-                                          <div class="link-body">
-                                             <h4>Quickbooks </h4>
-                                             <p>#1 Cloud Accounting Software for Small Businesses</p>
-                                          </div>
-                                          <div class="link-footer">
-                                             <div class="badge">
-                                                Customer Support
-                                             </div>
-                                          </div>
-                                       </a>
-                                    </div>
-                                 </div>
-                                 <div class="col-md-4">
-                                    <div class="link-box">
-                                       <a href="http://www.selfservebot.com">
-                                          <div class="link-heading">
-                                             <div class="icon">
-                                                <img src="images/logos/freshbooks.png">
-                                             </div>
-                                          </div>
-                                          <div class="link-body">
-                                             <h4>Freshbooks</h4>
-                                             <p>Refreshingly Easy Accounting & Invoicing for Small Businesses</p>
-                                          </div>
-                                          <div class="link-footer">
-                                             <div class="badge">
-                                                Customer Support
-                                             </div>
-                                          </div>
-                                       </a>
-                                    </div>
-                                 </div>
-                              </div>
-                           </section>
-                           <section id="expenceManagement" ng-show="isCatSelected('Expense Management')">
-                              <div class="row">
-                                 <div class="col-md-12">
-                                    <h3>Expense Management </h3>
-                                    <p></p>
-                                 </div>
-                              </div>
-                              <div class="row">
-                                 <div class="col-md-4">
-                                    <div class="link-box">
-                                       <a href="http://www.selfservebot.com">
-                                          <div class="link-heading">
-                                             <div class="icon">
-                                                <img src="images/logos/expensify.png">
-                                             </div>
-                                          </div>
-                                          <div class="link-body">
-                                             <h4>Expensify  </h4>
-                                             <p>Expense reports that don’t Suck !</p>
-                                          </div>
-                                          <div class="link-footer">
-                                             <div class="badge">
-                                                Customer Support
-                                             </div>
-                                          </div>
-                                       </a>
-                                    </div>
-                                 </div>
-                                 <div class="col-md-4">
-                                    <div class="link-box">
-                                       <a href="http://www.selfservebot.com">
-                                          <div class="link-heading">
-                                             <div class="icon">
-                                                <img src="images/logos/concur.png">
-                                             </div>
-                                          </div>
-                                          <div class="link-body">
-                                             <h4>Concur</h4>
-                                             <p>Business & Travel Expense Management</p>
-                                          </div>
-                                          <div class="link-footer">
-                                             <div class="badge">
-                                                Customer Support
-                                             </div>
-                                          </div>
-                                       </a>
-                                    </div>
-                                 </div>
-                                 <div class="col-md-4">
-                                    <div class="link-box">
-                                       <a href="http://www.selfservebot.com">
-                                          <div class="link-heading">
-                                             <div class="icon">
-                                                <img src="images/logos/certify.png">
-                                             </div>
-                                          </div>
-                                          <div class="link-body">
-                                             <h4>Certify </h4>
-                                             <p>Travel & Expense Management Software</p>
-                                          </div>
-                                          <div class="link-footer">
-                                             <div class="badge">
-                                                Customer Support
-                                             </div>
-                                          </div>
-                                       </a>
-                                    </div>
-                                 </div>
-                              </div>
-                           </section>
-                           <section id="appointmentManagement" ng-show="isCatSelected('Appointment Management')">
-                              <div class="row">
-                                 <div class="col-md-12">
-                                    <h3>Appointment Management</h3>
-                                    <p></p>
-                                 </div>
-                              </div>
-                              <div class="row">
-                                 <div class="col-md-4">
-                                    <div class="link-box">
-                                       <a href="http://www.selfservebot.com">
-                                          <div class="link-heading">
-                                             <div class="icon">
-                                                <img src="images/logos/appointy.png">
-                                             </div>
-                                          </div>
-                                          <div class="link-body">
-                                             <h4>Appointy</h4>
-                                             <p>Schedule Online, Increase Productivity, Retain Customers</p>
-                                          </div>
-                                          <div class="link-footer">
-                                             <div class="badge">
-                                                Customer Support
-                                             </div>
-                                          </div>
-                                       </a>
-                                    </div>
-                                 </div>
-                                 <div class="col-md-4">
-                                    <div class="link-box">
-                                       <a href="http://www.selfservebot.com">
-                                          <div class="link-heading">
-                                             <div class="icon">
-                                                <img src="images/logos/Simplybookme.png">
-                                             </div>
-                                          </div>
-                                          <div class="link-body">
-                                             <h4>Simplybook.me</h4>
-                                             <p>Online booking system for websites, facebook and calendar scheduling app</p>
-                                          </div>
-                                          <div class="link-footer">
-                                             <div class="badge">
-                                                Customer Support
+                                             <div class="showmore pull-right">
+                                                <a ng-href="{{app.hyperLink}}">Show more</a>
                                              </div>
                                           </div>
                                        </a>
