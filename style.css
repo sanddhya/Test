@@ -340,6 +340,8 @@ span.checkBox img {
     margin: 10px 0;
     padding: 25px 15px;
     border-radius: 5px;
+    position: fixed;
+    bottom: 30px;
 }
 
 .payAndSubscribe label {
