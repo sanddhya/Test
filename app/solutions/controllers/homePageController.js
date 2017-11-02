@@ -4,7 +4,10 @@ var homePageController = pbSmbApp.controller('homePageController', ['$scope', fu
 
     $(document).ready(function () {
 
-        $(".single-item").slick({});
+        $(".single-item").slick({
+            autoplay: true,
+            autoplaySpeed: 1000
+        });
 
         $('a[data-toggle]').click(function () {
             var category = $(this).attr('data-toggle');
