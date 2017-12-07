@@ -1,50 +1,70 @@
 var legalServicesController = pbSmbApp.controller('legalServicesController', ['$scope', function ($scope) {
-    $scope.selectedCategories = ['Shipping & Mailing',
-		'Marketing',
-		'Timesheets & Billing',
-		'Accounting & Taxation',
-		'Expense Management',
-		'Appointment Management',
-		'CRM',
-		'Customer Support'];
-    $scope.selectedApps = [];
-    $scope.categories = [
-    	'Shipping & Mailing',
-		'Marketing',
-		'Timesheets & Billing',
-		'Accounting & Taxation',
-		'Expense Management',
-		'Appointment Management',
-		'CRM',
-		'Customer Support'
-	]
+    
+    window.scrollTo(0, 0);
 
-	window.scrollTo(0, 0);
+    $scope.selectedAppLength = 0;
+    $scope.selectedCategoryLength = 0;
 
 	$scope.selectCategory = function(category){
-		var index = $scope.selectedCategories.indexOf(category);
-		if(index == -1){
-			 $scope.selectedCategories.push(category);
+		category.selected = !category.selected;
+
+		if(category.selected){
+			$scope.selectedCategoryLength++;
+			for(var i=0;i<category.apps.length;i++){
+				category.apps[i].selected = true;
+				$scope.selectedAppLength++;
+			}
 		}else{
-			$scope.selectedCategories.splice(index,1);
+			$scope.selectedCategoryLength--;
+			for(var i=0;i<category.apps.length;i++){
+				if(category.apps[i].selected){
+					$scope.selectedAppLength--;
+				}
+				category.apps[i].selected = false;
+				
+			}
 		}
 	}
 
 	$scope.isCatSelected = function(cat){
-		return $scope.selectedCategories.indexOf(cat) != -1;
+		return cat.selected;
 	}
 
-	$scope.selectApp = function(app){
-		var index = $scope.selectedApps.indexOf(app);
-		if(index == -1){
-			 $scope.selectedApps.push(app);
+	$scope.selectApp = function(app,category){
+		app.selected = !app.selected;
+
+		if(app.selected){
+			$scope.selectedAppLength++;
 		}else{
-			$scope.selectedApps.splice(index,1);
+			$scope.selectedAppLength--;
+		}
+
+		var selectedAppLength = category.apps.filter(function(app){
+			return app.selected;
+		}).length;
+
+		if(selectedAppLength){
+			if(!category.selected){
+				$scope.selectedCategoryLength++;
+			}
+			category.selected = true;
+		}else{
+			category.selected = false;
+			$scope.selectedCategoryLength--;
 		}
 	}
 
 	$scope.isAppSelected = function(app){
-		return $scope.selectedApps.indexOf(app) != -1;
+		return app.selected;
+	}
+
+	$scope.showSelection = function(){
+		for(var i=0;i<$scope.categoryList.length;i++){
+			if($scope.categoryList[i].selected){
+				return true;
+			}
+		}
+		return false;
 	}
 
 	$scope.categoryList = [
@@ -64,7 +84,7 @@ var legalServicesController = pbSmbApp.controller('legalServicesController', ['$
 						'desc':'Raven Delivery’ is an on-demand delivery platform integrated with UberRush/PostMates systems to our SMB clients.',
 						'iconUrl':'Reven Delivery.png',
 						'cost':'$10 per person/Month',
-						'hyperLink':'http://www.shipminders.com'
+						'hyperLink':'http://www.ravendelivery.com'
 					}
 			]
 		},
@@ -151,21 +171,21 @@ var legalServicesController = pbSmbApp.controller('legalServicesController', ['$
 						'desc':'Expense reports that don’t Suck !',
 						'iconUrl':'expensify.png',
 						'cost':'$10 per person/Month',
-						'hyperLink':'https://www.quickbooks.in/'
+						'hyperLink':'https://www.expensify.com/'
 					},
 					{
 						'name':'Concur',
 						'desc':'Business & Travel Expense Management',
 						'iconUrl':'concur.png',
 						'cost':'$10 per person/Month',
-						'hyperLink':'https://www.freshbooks.com/'
+						'hyperLink':'https://www.concursolutions.com/'
 					},
 					{
 						'name':'Certify',
 						'desc':'Travel & Expense Management Software',
 						'iconUrl':'certify.png',
 						'cost':'$10 per person/Month',
-						'hyperLink':'https://www.freshbooks.com/'
+						'hyperLink':'https://www.certify.com/'
 					}
 			]
 		},
@@ -178,14 +198,14 @@ var legalServicesController = pbSmbApp.controller('legalServicesController', ['$
 						'desc':'Schedule Online, Increase Productivity, Retain Customers',
 						'iconUrl':'appointy.png',
 						'cost':'$10 per person/Month',
-						'hyperLink':'https://www.quickbooks.in/'
+						'hyperLink':'https://appointy.com/'
 					},
 					{
 						'name':'Simplybook.me',
 						'desc':'Online booking system for websites, facebook and calendar scheduling app',
 						'iconUrl':'Simplybookme.png',
 						'cost':'$10 per person/Month',
-						'hyperLink':'https://www.freshbooks.com/'
+						'hyperLink':'https://simplybook.me/'
 					}
 			]
 		}

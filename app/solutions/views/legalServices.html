@@ -40,22 +40,22 @@
                      <div class="left-panel">
                            <h3>Categories</h3>
                            <ul>
-                              <li ng-repeat="cat in categories">
+                              <li ng-repeat="cat in categoryList">
                                  <a ng-click="selectCategory(cat)" href="javascript:void(0)">
                                  <span class="checkBox">
                                     <img 
                                     ng-src="{{!isCatSelected(cat)?'images/logos/checkbox-blank.png':'images/logos/checkbox-marked.png'}}">
                                  </span>
-                                 {{cat}}
+                                 {{cat.name}}
                                  </a>
                               </li>
                               
                            </ul>
                      </div>
                      
-                     <div class="payAndSubscribe" ng-show="selectedCategories.length && selectedApps.length">
+                     <div class="payAndSubscribe" ng-show="showSelection()">
                         <p>You have selected,</p>
-                        <label><span>{{selectedApps.length}}</span> Apps from <span>{{selectedCategories.length}}</span> categories</label>
+                        <label><span>{{selectedAppLength}}</span> Apps from <span>{{selectedCategoryLength}}</span> categories</label>
                         <a href="">Pay and Subscribe</a>
                      </div>
                   </div>
@@ -66,7 +66,7 @@
                      </div> -->
                      <div class="body">
                         <div class="col-md-12">
-                           <section ng-show="isCatSelected(cat.name)" ng-repeat="cat in categoryList">
+                           <section ng-repeat="cat in categoryList">
                               <div class="row">
                                  <div class="col-md-12">
                                     <h3>{{cat.name}}</h3>
@@ -80,7 +80,7 @@
                                           <img 
                                           ng-src="{{!isAppSelected(app)?'images/logos/checkbox-blank.png':'images/logos/checkbox-marked.png'}}">
                                        </span>
-                                       <a href="javascript:void(0)" ng-click="selectApp(app)">
+                                       <a href="javascript:void(0)" ng-click="selectApp(app,cat)">
                                           <div class="link-heading">
                                              <div class="icon">
                                                 <img ng-src="{{'images/logos/'+app.iconUrl}}">
@@ -95,7 +95,7 @@
                                                 {{app.cost}}
                                              </div>
                                              <div class="showmore pull-right">
-                                                <a ng-href="{{app.hyperLink}}">Show more</a>
+                                                <a ng-href="{{app.hyperLink}}">Know more</a>
                                              </div>
                                           </div>
                                        </a>
