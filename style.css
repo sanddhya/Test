@@ -30,18 +30,14 @@ header .overlay {
     padding: 50px 0;
     background-image: url(../images/background.png);
     background-color: #fff;
+    clear: both;
 }
 
 .bundle-links a {
     display: block;
 }
 
-.bundle-links {
-    display: flex;
-    justify-content: space-evenly;
-    width: 80%;
-    margin: 0 auto;
-}
+
 
 .bundleSection .circle {
     background: #F8F8F8;
@@ -71,6 +67,7 @@ header .overlay {
     text-align: center;
     padding: 10px 0;
     width: 150px;
+    margin: 0 auto;
 }
 
 .bundle-links .desc label {
@@ -285,7 +282,12 @@ body {
 
 .partnerLogos {
     display: flex;
-    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.logoBox{
+    width: 168px;
+    text-align: center;
+    margin: 10px 0;
 }
 
 .ourPartner h1 {
@@ -372,4 +374,25 @@ span.checkBox img {
 
 .slick-slide {
     text-align: center;
+}
+.single-item.slick-slider{
+    margin: 0;
+    margin-bottom: 30px;
+}
+.carousalContainer{
+    padding: 0;
+    background: #fff;
+}
+
+@media only screen and (max-width: 991px) {
+    .left-panel{
+        height: auto;
+        margin-bottom: 50px;
+    }
+}
+
+@media only screen and (max-width: 336px) {
+   .logoBox {
+        width: 100%;
+    }
 }
